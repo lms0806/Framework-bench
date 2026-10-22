@@ -2,3 +2,5 @@
 /spring-boot/.gradle/
 /spring-boot/build/
 /.gradle-local/
+/nestjs/node_modules/
+/nestjs/dist/

@@ -37,3 +37,15 @@ java -jar spring-boot/build/libs/spring-boot-bench-0.1.0.jar
 
 기본 주소는 `0.0.0.0:3000`이며, `SERVER_ADDRESS`와 `SERVER_PORT` 환경 변수로 변경할 수 있습니다. Axum과 동시에 실행할 때는 서로 다른 포트를 지정하세요. 엔드포인트와 응답은 위 표와 동일합니다. 테스트는 `.\spring-boot\gradlew.bat -p spring-boot test`로 실행합니다.
 
+
+## NestJS
+
+Node.js 20 이상과 npm이 필요합니다. NestJS와 기본 Express 어댑터를 사용합니다.
+
+```powershell
+npm --prefix nestjs ci
+npm --prefix nestjs run build
+npm --prefix nestjs start
+```
+
+기본 주소는 `0.0.0.0:3000`이며 `HOST`와 `PORT` 환경 변수로 변경할 수 있습니다. 다른 서버와 동시에 실행할 때는 서로 다른 포트를 지정하세요. 엔드포인트와 응답 본문은 위 표와 동일합니다. Express는 JSON 응답의 Content-Type에 `charset=utf-8`을 추가합니다. 테스트는 `npm --prefix nestjs test`로 실행합니다.
