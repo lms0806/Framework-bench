@@ -4,3 +4,6 @@
 /.gradle-local/
 /nestjs/node_modules/
 /nestjs/dist/
+/fastapi/.venv/
+/fastapi/__pycache__/
+/fastapi/tests/__pycache__/

@@ -49,3 +49,19 @@ npm --prefix nestjs start
 ```
 
 기본 주소는 `0.0.0.0:3000`이며 `HOST`와 `PORT` 환경 변수로 변경할 수 있습니다. 다른 서버와 동시에 실행할 때는 서로 다른 포트를 지정하세요. 엔드포인트와 응답 본문은 위 표와 동일합니다. Express는 JSON 응답의 Content-Type에 `charset=utf-8`을 추가합니다. 테스트는 `npm --prefix nestjs test`로 실행합니다.
+
+## FastAPI
+
+Python 3.14에서 확인했으며, FastAPI와 Uvicorn의 기본 설정(워커 1개)을 사용합니다. 다음 명령은 Windows PowerShell에서 저장소 루트 기준입니다.
+
+```powershell
+python -m venv fastapi/.venv
+.\fastapi\.venv\Scripts\python.exe -m pip install -r fastapi/requirements.txt
+.\fastapi\.venv\Scripts\python.exe -m uvicorn main:app --app-dir fastapi --host 0.0.0.0 --port 3000
+```
+
+주소와 포트는 `--host`와 `--port`로 변경할 수 있습니다. 다른 서버와 동시에 실행할 때는 서로 다른 포트를 지정하세요. 엔드포인트와 응답은 위 표와 동일합니다. `requirements.txt`는 검증한 의존성 버전을 고정하며, 직접 사용하는 패키지는 `requirements.in`에 명시되어 있습니다.
+
+```powershell
+.\fastapi\.venv\Scripts\python.exe -m unittest discover -s fastapi/tests -v
+```
