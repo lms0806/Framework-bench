@@ -1,6 +1,9 @@
 package com.frameworkbench;
 
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import tools.jackson.databind.ObjectMapper;
+import tools.jackson.module.blackbird.BlackbirdModule;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.server.LocalServerPort;
 import java.util.stream.IntStream;
@@ -16,6 +19,14 @@ import static org.assertj.core.api.Assertions.assertThat;
 class BenchmarkApplicationTest {
     @LocalServerPort
     int port;
+
+    @Autowired
+    ObjectMapper objectMapper;
+
+    @Test
+    void blackbirdIsRegisteredWithTheApplicationMapper() {
+        assertThat(objectMapper.registeredModules()).anyMatch(module -> module instanceof BlackbirdModule);
+    }
 
     @Test
     void endpointsReturnExpectedResponses() {

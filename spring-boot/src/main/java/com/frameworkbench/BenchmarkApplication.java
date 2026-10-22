@@ -1,6 +1,8 @@
 package com.frameworkbench;
 
 import org.springframework.boot.SpringApplication;
+import org.springframework.context.annotation.Bean;
+import tools.jackson.module.blackbird.BlackbirdModule;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.http.MediaType;
 import java.util.List;
@@ -15,6 +17,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class BenchmarkApplication {
     public static void main(String[] args) {
         SpringApplication.run(BenchmarkApplication.class, args);
+    }
+
+    @Bean
+    BlackbirdModule blackbirdModule() {
+        return new BlackbirdModule();
     }
 
     @GetMapping(value = "/health", produces = "text/plain;charset=UTF-8")
