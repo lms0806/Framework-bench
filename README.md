@@ -4,7 +4,7 @@
 
 ## Axum
 
-Rust와 Cargo가 필요합니다. 저장소 루트에서 실행합니다.
+Rust 1.85.0과 Cargo가 필요합니다. rustup을 사용하면 저장소의 `rust-toolchain.toml`이 해당 버전을 선택합니다. 저장소 루트에서 실행합니다.
 
 ```powershell
 cargo run --release --manifest-path axum/Cargo.toml
@@ -65,3 +65,4 @@ python -m venv fastapi/.venv
 ```powershell
 .\fastapi\.venv\Scripts\python.exe -m unittest discover -s fastapi/tests -v
 ```
+
