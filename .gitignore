@@ -1,1 +1,4 @@
 /axum/target/
+/spring-boot/.gradle/
+/spring-boot/build/
+/.gradle-local/

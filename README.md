@@ -25,3 +25,15 @@ cargo test --manifest-path axum/Cargo.toml
 ```
 
 성능 비교 시 각 서버에 동일한 경로와 응답을 구현하고, 릴리스 빌드, 클라이언트, 동시 연결 수, 실행 시간 및 하드웨어 조건을 동일하게 맞춰야 합니다. `/health`는 준비 상태 확인용이며 벤치마크 대상은 `/plaintext`와 `/json`입니다.
+
+## Spring Boot
+
+Java 17 이상이 필요합니다. Gradle Wrapper가 필요한 Gradle을 다운로드합니다. Spring Boot 3.5 기반의 Spring MVC와 내장 Tomcat을 사용합니다.
+
+```powershell
+.\spring-boot\gradlew.bat -p spring-boot clean build
+java -jar spring-boot/build/libs/spring-boot-bench-0.1.0.jar
+```
+
+기본 주소는 `0.0.0.0:3000`이며, `SERVER_ADDRESS`와 `SERVER_PORT` 환경 변수로 변경할 수 있습니다. Axum과 동시에 실행할 때는 서로 다른 포트를 지정하세요. 엔드포인트와 응답은 위 표와 동일합니다. 테스트는 `.\spring-boot\gradlew.bat -p spring-boot test`로 실행합니다.
+
