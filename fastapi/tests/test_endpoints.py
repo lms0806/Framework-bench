@@ -1,3 +1,4 @@
+import json
 import socket
 import subprocess
 import sys
@@ -5,7 +6,7 @@ import time
 import unittest
 from pathlib import Path
 from urllib.error import URLError
-from urllib.request import urlopen
+from urllib.request import Request, urlopen
 
 
 class EndpointTests(unittest.TestCase):
@@ -42,6 +43,16 @@ class EndpointTests(unittest.TestCase):
                     self.assertEqual(response.status, 200)
                     self.assertEqual(response.headers["Content-Type"], content_type)
                     self.assertEqual(response.read(), body)
+            with urlopen(base + "/json-large", timeout=5) as response:
+                self.assertEqual(response.status, 200)
+                self.assertEqual(json.load(response), [
+                    {"id": i, "name": f"item-{i}", "value": i * 10} for i in range(1, 101)
+                ])
+            request = Request(base + "/aggregate", data=json.dumps({"numbers": list(range(1, 1001))}).encode(),
+                              headers={"Content-Type": "application/json"}, method="POST")
+            with urlopen(request, timeout=5) as response:
+                self.assertEqual(response.status, 200)
+                self.assertEqual(json.load(response), {"count": 1000, "sum": 500500, "min": 1, "max": 1000})
         finally:
             server.terminate()
             try:
