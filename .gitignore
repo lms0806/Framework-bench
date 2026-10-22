@@ -7,3 +7,4 @@
 /fastapi/.venv/
 /fastapi/__pycache__/
 /fastapi/tests/__pycache__/
+/benchmark/results/

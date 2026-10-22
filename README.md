@@ -66,3 +66,14 @@ python -m venv fastapi/.venv
 .\fastapi\.venv\Scripts\python.exe -m unittest discover -s fastapi/tests -v
 ```
 
+
+## k6 성능 테스트
+
+[k6 설치 안내](https://grafana.com/docs/k6/latest/set-up/install-k6/)에 따라 k6를 설치하고, 위 실행 방법으로 **서버 하나만** 먼저 실행합니다. 별도의 PowerShell에서 저장소 루트 기준으로 실행합니다.
+
+```powershell
+# 기본: plaintext, 초당 100회, 30초
+k6 run benchmark/load.js
+
+# Spring Boot 등은 먼저 워밍업한 뒤 측정합니다 (워밍업 결과는 비교에 사용하지 않음).
+k6 run -e RATE=100 -e DURATION=30s benchmark/load.js
