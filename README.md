@@ -28,7 +28,7 @@ cargo test --manifest-path axum/Cargo.toml
 
 ## Spring Boot
 
-Java 17 이상이 필요합니다. Gradle Wrapper가 필요한 Gradle을 다운로드합니다. Spring Boot 3.5 기반의 Spring MVC와 내장 Tomcat을 사용합니다.
+JDK 25가 필요합니다. `JAVA_HOME`을 JDK 25 경로로 설정하세요. Gradle Wrapper가 필요한 Gradle을 다운로드합니다. Spring Boot 4.1 기반의 Spring MVC와 내장 Tomcat을 사용합니다.
 
 ```powershell
 .\spring-boot\gradlew.bat -p spring-boot clean build
