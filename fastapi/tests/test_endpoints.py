@@ -47,7 +47,7 @@ class EndpointTests(unittest.TestCase):
                 self.assertEqual(response.status, 200)
                 self.assertEqual(response.headers["Content-Type"], "application/json")
                 expected = [
-                    {"id": i, "name": f"item-{i}", "value": i * 10} for i in range(1, 101)
+                    {"id": i, "name": f"item-{i}", "value": i * 10} for i in range(1, 1001)
                 ]
                 self.assertEqual(response.read(), json.dumps(expected, separators=(",", ":")).encode())
             request = Request(base + "/aggregate", data=json.dumps({"numbers": list(range(1, 1001))}).encode(),

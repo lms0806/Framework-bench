@@ -40,7 +40,7 @@ fn fast_json<T: Serialize>(value: &T) -> Response {
 }
 
 async fn json_large() -> Response {
-    let items: Vec<Item> = (1..=100)
+    let items: Vec<Item> = (1..=1000)
         .map(|id| Item {
             id,
             name: format!("item-{id}"),
@@ -143,7 +143,7 @@ mod tests {
         assert_eq!(response.status(), StatusCode::OK);
         let data: serde_json::Value =
             serde_json::from_slice(&to_bytes(response.into_body(), 65536).await.unwrap()).unwrap();
-        let expected: Vec<_> = (1..=100)
+        let expected: Vec<_> = (1..=1000)
             .map(|id| serde_json::json!({"id": id, "name": format!("item-{id}"), "value": id * 10}))
             .collect();
         assert_eq!(data, serde_json::json!(expected));

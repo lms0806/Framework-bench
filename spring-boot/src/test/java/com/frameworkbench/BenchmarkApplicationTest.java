@@ -39,7 +39,7 @@ class BenchmarkApplicationTest {
     @Test
     void workloadEndpointsReturnExpectedData() {
         RestClient client = RestClient.create("http://localhost:" + port);
-        String expected = IntStream.rangeClosed(1, 100)
+        String expected = IntStream.rangeClosed(1, 1000)
                 .mapToObj(id -> "{\"id\":" + id + ",\"name\":\"item-" + id + "\",\"value\":" + id * 10 + "}")
                 .collect(java.util.stream.Collectors.joining(",", "[", "]"));
         assertResponse(client, "/json-large", "application/json", expected);

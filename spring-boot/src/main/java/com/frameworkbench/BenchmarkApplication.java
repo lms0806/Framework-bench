@@ -41,7 +41,7 @@ public class BenchmarkApplication {
 
     @GetMapping(value = "/json-large", produces = MediaType.APPLICATION_JSON_VALUE)
     public List<Item> jsonLarge() {
-        return IntStream.rangeClosed(1, 100)
+        return IntStream.rangeClosed(1, 1000)
                 .mapToObj(id -> new Item(id, "item-" + id, id * 10)).toList();
     }
 

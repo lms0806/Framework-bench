@@ -45,7 +45,7 @@ class AggregateInput(BaseModel):
 
 @app.get("/json-large")
 async def json_large() -> list[Item]:
-    return [{"id": i, "name": f"item-{i}", "value": i * 10} for i in range(1, 101)]
+    return [{"id": i, "name": f"item-{i}", "value": i * 10} for i in range(1, 1001)]
 
 
 @app.post("/aggregate")

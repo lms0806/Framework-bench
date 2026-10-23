@@ -32,7 +32,7 @@ export class AppController {
   @Get('json-large')
   @Header('Content-Type', 'application/json; charset=utf-8')
   jsonLarge(): string {
-    return stringifyItems(Array.from({ length: 100 }, (_, index) => {
+    return stringifyItems(Array.from({ length: 1000 }, (_, index) => {
       const id = index + 1;
       return { id, name: `item-${id}`, value: id * 10 };
     }));

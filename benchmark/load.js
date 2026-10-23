@@ -15,7 +15,7 @@ const responses = {
   plaintext: { body: 'Hello, World!', contentType: 'text/plain' },
   json: { body: '{"message":"Hello, World!"}', contentType: 'application/json' },
   'json-large': {
-    body: JSON.stringify(Array.from({ length: 100 }, (_, index) => {
+    body: JSON.stringify(Array.from({ length: 1000 }, (_, index) => {
       const id = index + 1;
       return { id, name: `item-${id}`, value: id * 10 };
     })),

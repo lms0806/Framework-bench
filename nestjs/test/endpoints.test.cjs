@@ -19,7 +19,7 @@ test('HTTP endpoints return the agreed responses', async () => {
     }
     const large = await fetch(`http://127.0.0.1:${address.port}/json-large`);
     assert.equal(large.status, 200);
-    assert.deepEqual(await large.json(), Array.from({ length: 100 }, (_, index) => {
+    assert.deepEqual(await large.json(), Array.from({ length: 1000 }, (_, index) => {
       const id = index + 1;
       return { id, name: `item-${id}`, value: id * 10 };
     }));
