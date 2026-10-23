@@ -8,3 +8,5 @@
 /fastapi/__pycache__/
 /fastapi/tests/__pycache__/
 /benchmark/results/
+/gin/.tools/
+/gin/bin/
