@@ -1,8 +1,27 @@
+from typing import TypedDict
+
 from fastapi import FastAPI
 from fastapi.responses import PlainTextResponse
 from pydantic import BaseModel
 
 app = FastAPI()
+
+
+class Message(TypedDict):
+    message: str
+
+
+class Item(TypedDict):
+    id: int
+    name: str
+    value: int
+
+
+class AggregateResult(TypedDict):
+    count: int
+    sum: int
+    min: int
+    max: int
 
 
 @app.get("/health", response_class=PlainTextResponse)
@@ -16,7 +35,7 @@ async def plaintext() -> str:
 
 
 @app.get("/json")
-async def json_response() -> dict[str, str]:
+async def json_response() -> Message:
     return {"message": "Hello, World!"}
 
 
@@ -25,11 +44,11 @@ class AggregateInput(BaseModel):
 
 
 @app.get("/json-large")
-async def json_large() -> list[dict[str, int | str]]:
+async def json_large() -> list[Item]:
     return [{"id": i, "name": f"item-{i}", "value": i * 10} for i in range(1, 101)]
 
 
 @app.post("/aggregate")
-async def aggregate(data: AggregateInput) -> dict[str, int]:
+async def aggregate(data: AggregateInput) -> AggregateResult:
     return {"count": len(data.numbers), "sum": sum(data.numbers),
             "min": min(data.numbers, default=0), "max": max(data.numbers, default=0)}
