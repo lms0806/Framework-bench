@@ -11,3 +11,6 @@
 /benchmark/results/
 /gin/.tools/
 /gin/bin/
+/aspnet/.tools/
+/aspnet/bin/
+/aspnet/obj/
