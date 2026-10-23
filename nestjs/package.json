@@ -7,8 +7,10 @@
   },
   "scripts": {
     "build": "tsc -p tsconfig.json",
-    "start": "node dist/main.js",
-    "test": "npm run build && node --test test/*.test.cjs"
+    "start": "node dist/cluster.js",
+    "start:single": "node dist/main.js",
+    "test": "npm run build && node --test test/*.test.cjs",
+    "start:parallel": "node dist/cluster.js"
   },
   "dependencies": {
     "@nestjs/common": "12.2.0",
